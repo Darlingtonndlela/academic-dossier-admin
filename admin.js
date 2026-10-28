@@ -16,7 +16,7 @@ const PROFILE_DEFAULTS = {
     research_title: "Computational Intelligence in Nuclear Safety",
     research_text: "Focusing on optimizing Nuclear Power Plant (NPP) reliability and safety outcomes through Genetic Algorithms (GA) and Weibull parameter estimation. Dedicated to engineering data-driven analysis workflows for complex engineering contexts, infrastructure reliability assessment, and reinforcing nuclear security culture.",
     certificates_folder: "https://drive.google.com/drive/folders/1tjltKjXomAYr7xfo2IFSl8LM1oyosEe-",
-    portfolio: "",
+    portfolio: "https://darlingtonndlela.github.io/academic-dossier-admin/",
     cv_cert_heading: "IAEA E-Learning Modules (Completed):"
 };
 
@@ -52,7 +52,7 @@ const PROFILE_FIELDS = [
     { key: "certificates_folder", label: "Certificates Google Drive folder link", hint: "The folder shown in the Certificates PDF tab. It must be shared as \"Anyone with the link\"." },
     // Shown on the CV maker page instead of Profile
     { key: "cv_summary", label: "CV professional summary", cv: true, custom: true },
-    { key: "portfolio", label: "Academic Portfolio link", cv: true, hint: "Your website's address once it's online. Leave empty to use this site's address." },
+    { key: "portfolio", label: "Academic Portfolio link", cv: true, hint: "Your website's address. Leave empty to use the address this panel is opened from." },
     { key: "cv_cert_heading", label: "Certificates intro line", cv: true }
 ];
 

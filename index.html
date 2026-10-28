@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darlington Ndlela | Academic & Professional Dossier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+
+    <main class="page-wrapper">
+        <!-- Sidebar Profile Card -->
+        <aside class="profile-card">
+            <div class="avatar-container">
+                <img src="profile.png" alt="Darlington Ndlela" id="profileImage">
+            </div>
+            
+            <h1 class="profile-name" id="profileName">Darlington Ndlela</h1>
+            <p class="profile-title">
+                <span id="profileTitle">Nuclear Science and Technology</span><br>
+                <span class="profile-subtitle"><em id="profileSubtitle">(Radioecology and Radiation Protection)</em></span>
+            </p>
+
+            <div class="contact-details">
+                <a href="mailto:darlingtonndlela@gmail.com" class="contact-item" id="profileEmail">darlingtonndlela@gmail.com</a>
+                <span class="contact-item" id="profilePhone">+263782881303</span>
+                <span class="contact-item" id="profileAddress">Zvishavane, Zimbabwe</span>
+                <a href="https://orcid.org/0009-0009-8910-1468" target="_blank" rel="noopener noreferrer" class="contact-item link-accent" id="profileOrcid">ORCID Profile</a>
+                <a href="http://www.linkedin.com/in/darlington-ndlela" target="_blank" rel="noopener noreferrer" class="contact-item link-accent" id="profileLinkedin">LinkedIn Profile</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="content-card">
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="about">About</button>
+                <button class="tab-btn" data-tab="resume">Resume</button>
+                <button class="tab-btn" data-tab="portfolio">Publications</button>
+                <button class="tab-btn" data-tab="certificates-pdf">Certificates PDF</button>
+                <button class="tab-btn" data-tab="contact">Referees & Contact</button>
+            </nav>
+
+            <div class="content-body">
+                <!-- 1. ABOUT TAB -->
+                <div class="tab-content" id="about">
+                    <header class="section-heading">
+                        <h2>PROFESSIONAL SUMMARY</h2>
+                        <div class="heading-line"></div>
+                    </header>
+                    
+                    <p class="summary-text" id="summary-container">
+                        Nuclear Technologist & Computational Safety Specialist specializing in Radioecology and Radiation Safety with a strong foundation in scientific computing. Core expertise spans radiation protection, environmental safety, and applying Genetic Algorithms to Weibull parameter estimation for component reliability analysis. Recipient of multiple international awards with extensive conference presentation experience across innovative nuclear systems and safety research.
+                    </p>
+
+                    <h3 class="section-title">RESEARCH FOCUS</h3>
+                    <div class="section-stack">
+                        <article class="info-box">
+                            <h4 class="item-title" id="researchTitle">Computational Intelligence in Nuclear Safety</h4>
+                            <p class="item-description" id="researchText">
+                                Focusing on optimizing Nuclear Power Plant (NPP) reliability and safety outcomes through Genetic Algorithms (GA) and Weibull parameter estimation. Dedicated to engineering data-driven analysis workflows for complex engineering contexts, infrastructure reliability assessment, and reinforcing nuclear security culture.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- 2. RESUME TAB -->
+                <div class="tab-content hidden" id="resume">
+                    <h3 class="section-title">EDUCATION</h3>
+                    <div class="section-stack" id="education-container">
+                        <article class="info-box"><p class="item-meta">Loading Education...</p></article>
+                    </div>
+
+                    <h3 class="section-title">RELEVANT EXPERIENCE</h3>
+                    <div class="section-stack" id="experience-container">
+                        <article class="info-box"><p class="item-meta">Loading Experience...</p></article>
+                    </div>
+
+                    <h3 class="section-title">HONORS & AWARDS</h3>
+                    <div class="section-stack">
+                        <article class="info-box">
+                            <ul class="item-list clean-list" id="awards-container">
+                                <li>Loading Awards...</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <h3 class="section-title">ADVANCED TRAINING & PRACTICALS</h3>
+                    <div class="section-stack">
+                        <article class="info-box">
+                            <ul class="item-list clean-list" id="training-container">
+                                <li>Loading Trainings...</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <h3 class="section-title">Certificates</h3>
+                    <div class="section-stack">
+                        <article class="info-box">
+                            <h4 class="skill-category-title" style="margin-bottom: 14px;">IAEA Certificates</h4>
+                            <ul class="cert-list" id="iaea-certs-container">
+                                <li>Loading Certificates...</li>
+                            </ul>
+                        </article>
+
+                        <article class="info-box">
+                            <h4 class="skill-category-title" style="margin-bottom: 14px;">Other Certificates & Qualifications</h4>
+                            <ul class="cert-list" id="other-certs-container">
+                                <li>Loading Certificates...</li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <h3 class="section-title">TECHNICAL SKILLS</h3>
+                    <div class="section-stack">
+                        <article class="info-box" id="skills-container">
+                            <p class="item-meta">Loading Skills...</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- 3. PUBLICATIONS TAB -->
+                <div class="tab-content hidden" id="portfolio">
+                    <header class="section-heading">
+                        <h2>PUBLICATIONS & SCIENTIFIC CONFERENCES</h2>
+                        <div class="heading-line"></div>
+                    </header>
+
+                    <div class="section-stack" id="publications-container">
+                        <article class="info-box"><p class="item-meta">Loading Publications...</p></article>
+                    </div>
+                </div>
+
+                <!-- 4. CERTIFICATES PDF TAB -->
+                <div class="tab-content hidden" id="certificates-pdf">
+                    <header class="section-heading">
+                        <h2>CERTIFICATES PDF</h2>
+                        <div class="heading-line"></div>
+                    </header>
+
+                    <div class="section-stack">
+                        <article class="info-box">
+                            <div class="item-header-row">
+                                <div>
+                                    <h4 class="item-title">Official Verification & Document Dossier</h4>
+                                    <p class="item-meta">Access and view all completed certifications and course records directly.</p>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1tjltKjXomAYr7xfo2IFSl8LM1oyosEe-?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cta-drive-btn" id="certsFolderLink">
+                                    Open Drive Folder &rarr;
+                                </a>
+                            </div>
+
+                            <div class="drive-embed-container">
+                                <iframe id="certsFolderFrame"
+                                    src="https://drive.google.com/embeddedfolderview?id=1tjltKjXomAYr7xfo2IFSl8LM1oyosEe-#grid" 
+                                    class="drive-iframe" 
+                                    title="Certificates Google Drive Folder">
+                                </iframe>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- 5. REFEREES TAB -->
+                <div class="tab-content hidden" id="contact">
+                    <header class="section-heading">
+                        <h2>REFEREES</h2>
+                        <div class="heading-line"></div>
+                    </header>
+
+                    <div class="section-stack" id="referees-container">
+                        <article class="info-box"><p class="item-meta">Loading Referees...</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

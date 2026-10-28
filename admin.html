@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Nucleus CV</title>
+    <meta name="theme-color" content="#070913">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Carlito has the same letter widths as Calibri, so the CV keeps its line breaks on Android -->
+    <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css?v=8">
+    <link rel="stylesheet" href="cv.css?v=8">
+</head>
+<body>
+    <!-- Sign in -->
+    <div id="loginView" class="login">
+        <form id="loginForm" class="card login-card">
+            <h1>Nucleus CV</h1>
+            <p class="muted">Sign in to edit your page.</p>
+            <label class="field">
+                <span class="field-label">Password</span>
+                <input type="password" id="passwordInput" autocomplete="current-password" required>
+            </label>
+            <button class="btn primary" type="submit" id="loginBtn">Sign in</button>
+            <p id="loginError" class="error-text" role="alert"></p>
+        </form>
+    </div>
+
+    <!-- Editor -->
+    <div id="appView" class="app" hidden>
+        <header class="topbar">
+            <strong class="brand">Nucleus CV</strong>
+            <span id="status" class="status" role="status"></span>
+            <div class="topbar-actions">
+                <a href="index.html" target="_blank" rel="noopener" class="btn ghost">View site</a>
+                <button id="logoutBtn" class="btn ghost" type="button">Log out</button>
+                <button id="printBtn" class="btn" type="button">Print CV</button>
+                <button id="saveBtn" class="btn primary" type="button">Save changes</button>
+            </div>
+        </header>
+        <div id="layoutWarning" class="layout-warning" role="alert" hidden></div>
+        <div class="layout">
+            <nav id="sectionNav" class="side-nav" aria-label="Sections"></nav>
+            <main id="editor" class="editor"></main>
+        </div>
+    </div>
+
+    <!-- Filled just before printing; only this is visible on paper -->
+    <div id="cvPrint"></div>
+    <!-- Off-screen copy of the CV, used to measure page lengths while editing -->
+    <div id="cvMeasure" aria-hidden="true"></div>
+
+    <script src="cv.js?v=8"></script>
+    <script src="admin.js?v=8"></script>
+</body>
+</html>

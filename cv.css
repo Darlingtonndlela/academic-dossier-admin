@@ -1,0 +1,108 @@
+/* Printable CV. Sizes, margins and spacing are taken from the original Word resume
+   (A4, Calibri 12pt, margins 6mm top / 10mm sides) */
+.cv {
+    font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.2207; /* Word "single" line spacing for Calibri */
+    color: #000;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.cv-page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 6mm 10mm 5mm; /* Word bottom margin is 10mm, but its referee boxes run to ~4mm from the edge */
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.cv p, .cv ul, .cv h1, .cv h2 { margin: 0; padding: 0; }
+.cv a { color: #0563c1; text-decoration: underline; }
+.cv strong { font-weight: 700; }
+
+.cv-name {
+    text-align: center;
+    font-size: 24pt;
+    font-weight: 700;
+    line-height: 1.2207;
+    margin: 0.6pt 0 12.8pt !important;
+}
+.cv-contact { text-align: center; }
+
+.cv-h {
+    font-size: 13.5pt;
+    font-weight: 700;
+    line-height: 1.2207;
+    text-transform: uppercase;
+    padding-bottom: 1pt !important;
+    border-bottom: 1.5pt solid #000;
+    margin: 14pt 0 13.8pt !important;
+}
+.cv-page > .cv-h:first-child { margin-top: 1.3pt !important; }
+
+/* Paragraphs Word sets at 1.08 line spacing */
+.cv-summary, .cv-tall { line-height: 1.318; }
+.cv-summary { margin-bottom: 8pt !important; }
+
+/* Browsers set Calibri ~0.45% narrower than Word; trimming the text width by 3pt
+   makes lines wrap at the same words as the Word original */
+.cv-summary { padding-right: 3pt !important; }
+
+/* Bullets: symbol at 0.25in, text at 0.5in */
+.cv ul { list-style: none; padding-left: 36pt !important; padding-right: 3pt !important; }
+.cv li { position: relative; }
+.cv li::before {
+    content: "•";
+    position: absolute;
+    left: -18pt;
+    font-family: Arial, sans-serif;
+}
+
+.cv-inst {
+    font-size: 14pt;
+    font-weight: 700;
+    line-height: 1.2207;
+    margin-bottom: 8pt;
+}
+
+.cv-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12pt;
+}
+.cv-degree {
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 8pt;
+    padding-right: 5.5pt;
+}
+.cv-degree + ul { margin-bottom: 8pt !important; }
+
+.cv-job { margin: 0 0 14pt 18pt; }
+.cv-job + ul { margin-bottom: 14pt !important; }
+
+.cv-sub {
+    font-weight: 700;
+    margin-bottom: 14pt !important;
+}
+
+.cv-referees {
+    display: grid;
+    grid-template-columns: 218pt 200pt 1fr;
+    margin-top: -4pt;
+    padding-left: 1.5pt;
+    text-align: justify;
+}
+.cv-ref-name {
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 7.25pt !important;
+}
+
+@media print {
+    @page { size: A4; margin: 0; }
+    .cv-page { min-height: 0; break-after: page; }
+    .cv-page:last-child { break-after: auto; }
+}

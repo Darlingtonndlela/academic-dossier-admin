@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a2038"/>
+      <stop offset="1" stop-color="#070913"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- CV page with folded corner -->
+  <path d="M180 132h104l60 60v180a16 16 0 0 1-16 16H180a16 16 0 0 1-16-16V148a16 16 0 0 1 16-16z" fill="#f4efe6"/>
+  <path d="M284 132v44a16 16 0 0 0 16 16h44z" fill="#d6cbb6"/>
+  <rect x="196" y="344" width="120" height="12" rx="6" fill="#b9b0a1"/>
+  <rect x="196" y="366" width="84" height="12" rx="6" fill="#b9b0a1"/>
+  <!-- atom: two orbits and a nucleus -->
+  <g fill="none" stroke="#e2a84b" stroke-width="13" stroke-linecap="round">
+    <ellipse cx="254" cy="246" rx="148" ry="50" transform="rotate(-28 254 246)"/>
+    <ellipse cx="254" cy="246" rx="148" ry="50" transform="rotate(28 254 246)"/>
+  </g>
+  <circle cx="254" cy="246" r="24" fill="#e2a84b"/>
+  <circle cx="384" cy="176" r="12" fill="#38bdf8"/>
+</svg>

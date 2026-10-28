@@ -102,9 +102,9 @@ function h(tag, attrs = {}, ...children) {
     return el;
 }
 
-async function api(action, payload = {}) {
+async function api(action, payload = {}, options = {}) {
     // A plain-text body keeps this a "simple" request, so Apps Script needs no CORS preflight
-    const res = await fetch(API_URL, { method: "POST", body: JSON.stringify({ action, password, ...payload }) });
+    const res = await fetch(API_URL, { method: "POST", body: JSON.stringify({ action, password, ...payload }), ...options });
     if (!res.ok) throw new Error("Server error " + res.status);
     const data = await res.json();
     if (!data.ok) throw new Error(data.error || "Request failed.");
@@ -170,9 +170,18 @@ function setStatus(text, kind = "") {
     el.className = "status" + (kind ? " " + kind : "");
 }
 
+// Every edit is saved to the sheet automatically, shortly after you stop typing
+const AUTOSAVE_DELAY = 1500;
+let changeCount = 0;
+let saving = false;
+let saveTimer;
+
 function markDirty() {
-    if (!dirty) setStatus("Unsaved changes", "warn");
     dirty = true;
+    changeCount++;
+    setStatus("Saving soon…", "warn");
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, AUTOSAVE_DELAY);
     checkLayout();
 }
 
@@ -247,6 +256,11 @@ window.addEventListener("beforeunload", e => {
     if (dirty) { e.preventDefault(); e.returnValue = ""; }
 });
 
+// Save straight away when the page is hidden (switching apps on a phone, closing the tab)
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden" && dirty && state) save({ keepalive: true });
+});
+
 // Rendering
 function render() {
     renderNav();
@@ -316,7 +330,7 @@ function photoField(f) {
             state.profile[f.key] = uploaded;
             markDirty();
             showPreview();
-            status.textContent = "Uploaded. Click \"Save changes\" to publish it.";
+            status.textContent = "Uploaded and saved.";
         } catch (err) {
             status.textContent = "Upload failed: " + err.message;
         } finally {
@@ -513,18 +527,24 @@ function deleteEntry(sec, i) {
     render();
 }
 
-async function save() {
-    const button = $("saveBtn");
-    button.disabled = true;
+async function save(options = {}) {
+    clearTimeout(saveTimer);
+    if (!state) return;
+    if (saving) { saveTimer = setTimeout(save, AUTOSAVE_DELAY); return; } // edits made during a save go out next
+    saving = true;
+    const savedChange = changeCount;
     setStatus("Saving…");
     try {
-        const { saved } = await api("save", { rows: toRows(state) });
-        dirty = false;
-        setStatus(`Saved ${saved} rows. Refresh your page to see the changes.`, "ok");
+        await api("save", { rows: toRows(state) }, options);
+        if (changeCount === savedChange) {
+            dirty = false;
+            setStatus("All changes saved", "ok");
+        }
     } catch (err) {
-        setStatus("Save failed: " + err.message, "error");
+        setStatus("Not saved: " + err.message + ". Retrying…", "error");
+        saveTimer = setTimeout(save, 10000);
     } finally {
-        button.disabled = false;
+        saving = false;
     }
 }
 
@@ -542,7 +562,8 @@ async function signIn(pw) {
 }
 
 function signOut() {
-    if (dirty && !confirm("You have unsaved changes. Log out anyway?")) return;
+    if (dirty && !confirm("Your latest changes are still saving. Log out anyway?")) return;
+    clearTimeout(saveTimer);
     dirty = false;
     password = "";
     state = null;
@@ -580,7 +601,7 @@ function init() {
             $("loginBtn").disabled = false;
         }
     });
-    $("saveBtn").addEventListener("click", save);
+    $("saveBtn").addEventListener("click", () => save());
     $("printBtn").addEventListener("click", printCV);
     // Re-measure once web fonts arrive, since line lengths depend on them
     document.fonts.addEventListener("loadingdone", checkLayout);

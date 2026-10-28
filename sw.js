@@ -1,6 +1,6 @@
 // Keeps the app shell available offline. Pages and files are always fetched fresh
 // when online; your data itself always comes live from the Google Sheet.
-const CACHE = "nucleus-cv-v1";
+const CACHE = "nucleus-cv-v2";
 const SHELL = ["admin.html", "admin.css", "admin.js", "cv.css", "cv.js", "manifest.webmanifest", "icons/icon-192.png"];
 
 self.addEventListener("install", e => {

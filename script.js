@@ -321,7 +321,8 @@ renderRecords(fallbackRecords);
 // 2. Fetch live data from Google Sheets in the background and update seamlessly
 async function fetchSheetData() {
     try {
-        const response = await fetch(GOOGLE_SHEET_CSV_URL, { cache: 'no-store' });
+        // The timestamp stops browsers and Google from serving an older copy right after a save
+        const response = await fetch(GOOGLE_SHEET_CSV_URL + '&t=' + Date.now(), { cache: 'no-store' });
         if (!response.ok) throw new Error("HTTP " + response.status);
         const csvText = await response.text();
         const records = parseCSV(csvText);
